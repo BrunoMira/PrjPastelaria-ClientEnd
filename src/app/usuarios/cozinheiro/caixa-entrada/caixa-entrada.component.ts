@@ -19,14 +19,25 @@ export class CaixaEntradaComponent implements OnInit {
 
   ngOnInit() {
     this.pedidoRejeitado = new Pedido();
+
+   this.getPedidosEtapaAceito();
+   this.getPedidosEtapaPreparo();
+
+    
+  }
+
+  getPedidosEtapaAceito(){
     this.pedidoService.getPedidosEtapa("ACEITO")
       .subscribe(resp => {
         this.pedidosAceitos = resp;
       })
+  }
 
+  getPedidosEtapaPreparo() {
     this.pedidoService.getPedidosEtapa("PREPARO")
-      .subscribe(resp => { 
-         this.pedidosPreparo = resp})
+      .subscribe(resp => {
+        this.pedidosPreparo = resp
+      })
   }
 
   cancelar(modal) {
@@ -96,5 +107,9 @@ export class CaixaEntradaComponent implements OnInit {
     modal.hide();
   }
 
+  atualizar(){
+    this.getPedidosEtapaAceito();
+    this.getPedidosEtapaPreparo();
+  }
 
 }

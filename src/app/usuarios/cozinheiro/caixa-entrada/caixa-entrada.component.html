@@ -12,8 +12,13 @@
               <div class="input-group">
                 <input type="text" class="form-control" [(ngModel)]="pesquisa" placeholder="Digite o código do pedido">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Pesquisar</button>
+                    <button class="btn btn-default disabled"  type="button">Pesquisar</button>
                 </span>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="pedido-linha">
+                <button class="btn btn-default" (click)="atualizar()">Atualizar Pedidos</button>
               </div>
             </div>
           </div>

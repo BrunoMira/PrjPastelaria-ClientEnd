@@ -10,7 +10,7 @@ import { Pedido } from "app/shared/classes/pedido";
 })
 export class CaixaEntradaComponent implements OnInit {
   pedidoRejeitado: Pedido = new Pedido();
-  pedidos: Pedido[];
+  pedidos: Pedido[] = [];;
   pesquisa: string;
 
 
@@ -19,8 +19,12 @@ export class CaixaEntradaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getPedidosEtapa()
+  }
+
+  getPedidosEtapa(){
     this.pedidoService.getPedidosEtapa("ENTRADA")
-    .subscribe( resp => this.pedidos = resp )
+      .subscribe(resp => this.pedidos = resp)
   }
 
   cancelar(modal){
@@ -53,6 +57,14 @@ export class CaixaEntradaComponent implements OnInit {
     this.pedidoService.atualizarPedido(this.pedidoRejeitado)
     .subscribe(resp => alert(resp))
     modal.hide();
+  }
+
+  atualizar(){
+    this.getPedidosEtapa()
+  }
+
+  possuiPedidosEntrada(){
+    return this.pedidos.length > 0;
   }
   
 

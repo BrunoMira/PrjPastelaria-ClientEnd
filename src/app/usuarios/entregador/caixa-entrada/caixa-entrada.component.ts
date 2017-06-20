@@ -18,11 +18,22 @@ export class CaixaEntradaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.getPedidosPronto();
+    this.getPedidosEntrega();
+
+
+    
+  }
+
+  getPedidosPronto(){
     this.pedidoService.getPedidosEtapa("PRONTO")
       .subscribe(resp => {
         this.pedidosProntos = resp;
       })
+  }
 
+  getPedidosEntrega(){
     this.pedidoService.getPedidosEtapa("ENTREGA")
       .subscribe(resp => {
         this.pedidosEntrega = resp;
@@ -106,6 +117,11 @@ export class CaixaEntradaComponent implements OnInit {
     this.pedidoService.atualizarPedido(this.pedidoRejeitado)
       .subscribe(resp => alert(resp))
     modal.hide();
+  }
+
+  atualizar(){
+    this.getPedidosPronto();
+    this.getPedidosEntrega();
   }
 
  

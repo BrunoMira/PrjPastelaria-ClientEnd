@@ -16,7 +16,12 @@
                 </span>
               </div>
             </div>
-          </div>
+            <div class="col-lg-6">
+                    <div class="pedido-linha">
+                      <button class="btn btn-default" (click)="atualizar()">Atualizar Pedidos</button>
+                    </div>
+              </div>
+            </div>
         </div>
         <div class="pedidos-container">
           <div class="card-pedido panel panel-default" *ngFor="let pedido of pedidos | pesquisa:pesquisa ">
@@ -48,10 +53,13 @@
             </div>
           </div>
         </div>
+          <p *ngIf="!possuiPedidosEntrada()">Nenhum Pedido na Etapa Entrada</p>
       </div>
     </div>
   </div>
 </div>
+
+
 
 
 
