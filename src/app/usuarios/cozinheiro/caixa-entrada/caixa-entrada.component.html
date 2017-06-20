@@ -1,0 +1,126 @@
+<div class="container-pedido">
+  <header class="page-title">Entrada de Pedidos</header>
+  <div class="container-pedido-body">
+    <div class="pedido">
+      <div class="pedido-section">
+        <div class="pedido-section-header">
+          <div class="pedido-section-title">
+            <h2>Pedidos Aceitos</h2>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="pesquisa" placeholder="Digite o código do pedido">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Pesquisar</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--******************************* Pedidos Aceitos ********************************************-->
+        <div class="pedidos-container" >
+          <div class="card-pedido panel panel-default" *ngFor="let pedidoAceito of (pedidosAceitos | pesquisa:pesquisa)">
+            <div class="card-pedido-body">
+              <div class="pedido-linha">
+                <h5 class="numero-pedido">Pedido {{pedidoAceito._id}}</h5>
+                <p class="pedido-status">{{pedidoAceito.etapa}}</p>
+              </div>
+              <div class="pedido-linha">
+                <p>Cliente:</p>
+                <p>{{pedidoAceito.clienteCPF}}</p>
+              </div>
+              <p class="pedido-descricao" *ngFor="let produtoAceito of pedidoAceito.pizza">
+                <span>{{produtoAceito.quantidade}} </span>
+                <span>{{produtoAceito.titulo}}</span>
+              </p>
+              <div class="pedido-linha">
+                <p>Preço Total:</p>
+                <p>{{pedidoAceito.precoTotal | currency:'BRL':true}}</p>
+                <p class="item-pedido-preco" *ngIf="pedidoAceito.estaPago; else pendente">Pago</p>
+                <ng-template #pendente>
+                  <p class="item-pedido-preco">Pendente</p>
+                </ng-template>
+              </div>
+            </div>
+            <div class="pedido-linha">
+              <button class="btn btn-default" (click)="rejeitar(lgModal,pedidoAceito)">Rejeitar</button>
+              <button type="button" class="btn btn-default" (click)="salvarAceito(pedidoAceito)">Em Preparo</button>
+            </div>
+          </div>
+        </div>
+        <p *ngIf="!possuiPedidosAceitos()">Nenhum Pedido na Etapa Aceito</p>
+      </div>
+
+     <!--******************************* Pedidos Prontos ********************************************-->
+
+      <div class="pedido-section">
+        <div class="pedido-section-header">
+          <div class="pedido-section-title">
+            <h2>Pedidos em Preparo</h2>
+          </div>
+        </div>
+        <div class="pedidos-container">
+          <div class="card-pedido panel panel-default" *ngFor="let pedidoPreparo of (pedidosPreparo | pesquisa:pesquisa)">
+            <div class="card-pedido-body">
+              <div class="pedido-linha">
+                <h5 class="numero-pedido">Pedido {{pedidoPreparo._id}}</h5>
+                <p class="pedido-status">{{pedidoPreparo.etapa}}</p>
+              </div>
+              <div class="pedido-linha">
+                <p>Cliente:</p>
+                <p>{{pedidoPreparo.clienteCPF}}</p>
+              </div>
+            <p class="pedido-descricao" *ngFor="let produtoPreparo of pedidoPreparo.pizza">
+              <span>{{produtoPreparo.quantidade}} </span>
+              <span>{{produtoPreparo.titulo}}</span>
+            </p>
+              <div class="pedido-linha">
+                <p>Preço Total:</p>
+                <p>{{pedidoPreparo.precoTotal | currency:'BRL':true}}</p>
+
+                <p class="item-pedido-preco" *ngIf="pedidoPreparo.estaPago; else pendente">Pago</p>
+                <ng-template #pendente>
+                  <p class="item-pedido-preco">Pendente</p>
+                </ng-template>
+
+              </div>
+            </div>
+            <div class="pedido-linha">
+              <button class="btn btn-default" (click)="rejeitar(lgModal,pedidoPreparo)">Rejeitar</button>
+              <button type="button" class="btn btn-default" (click)="aceitarPreparo(pedidoPreparo)">Pronto</button>
+            </div>
+          </div>
+        </div>
+        <p *ngIf="!possuiPedidosPreparados()">Nenhum Pedido na Etapa Preparo</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Porque deseja Rejeitar esse Pedido?</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="textArea">Digite o motivo da Recusa:</label>
+        <textarea [(ngModel)]="pedidoRejeitado.motivoRejeicao" class="form-control" name="textArea"></textarea>
+      </div>
+      <div class="modal-fotter">
+        <div class="modal-header">
+          <button type="button" class="btn btn-danger pull-left" (click)="rejeitarPedido(lgModal)" aria-label="Close">
+            Rejeitar
+        </button>
+          <button type="button" class="btn btn-warning pull-right" (click)="cancelar(lgModal)" aria-label="Close">
+            Voltar
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

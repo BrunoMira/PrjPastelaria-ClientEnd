@@ -1,0 +1,28 @@
+<div class="container-cadastro">
+  <header class="page-title">Cadastro</header>
+  <div class="col-md-12 box-cadastro">
+    <div class="panel-body">
+      <form role="form">
+        <fieldset>
+          <div class="form-group">
+            <input class="form-control" placeholder="CPF" [(ngModel)]="usuario.cpf" name="cpf" type="text">
+          </div>
+          <div class="form-group">
+            <input class="form-control" placeholder="Nome Completo" [(ngModel)]="usuario.nome" name="nome" type="text">
+          </div>
+          <div class="form-group">
+            <input class="form-control" placeholder="Permissao" [(ngModel)]="usuario.permissao" name="permissao" type="text">
+          </div>
+          <div class="form-group">
+            <input class="form-control" placeholder="Senha" [(ngModel)]="usuario.senha" name="senha" type="password">
+          </div>
+         
+          <div class="cadastro-opcoes">
+            <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
+            <button type="button" class="btn btn-default opt" (click)="salvarUsuario()">Salvar</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

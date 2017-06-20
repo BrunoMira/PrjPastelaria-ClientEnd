@@ -1,0 +1,124 @@
+<div  [ngSwitch]="usuarioLogado()">
+
+<nav *ngSwitchCase="'ATENDENTE'" class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="atendente/home">Pastelaria Nagata</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="atendente/home">Página Inicial</a></li>
+        <li routerLinkActive="active"><a  routerLink="atendente/novo-pedido">Novo Pedido</a></li>
+        <li routerLinkActive="active"><a  routerLink="atendente/caixa-entrada">Caixa de Entrada</a></li>
+        <li routerLinkActive="active"><a  routerLink="/historico">Histórico de Pedidos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Atendente {{getNomeUsuario()}}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li routerLinkActive="active"><a  routerLink="atendente/novo-usuario">Novo Usuário</a></li>
+            <li routerLinkActive="active"><a  routerLink="/home" (click)="logoutUsuario()">Sair</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav *ngSwitchCase="'COZINHEIRO'" class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="cozinheiro/home">Pastelaria Nagata</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="cozinheiro/home">Página Inicial</a></li>
+        <li routerLinkActive="active"><a routerLink="cozinheiro/caixa-entrada">Caixa de Entrada</a></li>
+        <li routerLinkActive="active"><a routerLink="/historico">Histórico de Pedidos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Cozinheiro  {{getNomeUsuario()}}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li> </li>
+            <li ><a routerLink="/home" (click)="logoutUsuario()">Sair</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav *ngSwitchCase="'ENTREGADOR'" class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="entregador/home">Pastelaria Nagata</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="entregador/home">Página Inicial</a></li>
+        <li routerLinkActive="active"><a routerLink="entregador/caixa-entrada">Caixa de Entrada</a></li>
+        <li routerLinkActive="active"><a routerLink="/historico">Histórico de Pedidos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Entregador  {{getNomeUsuario()}}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li> </li>
+            <li><a routerLink="/home" (click)="logoutUsuario()">Sair</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav *ngSwitchDefault class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/home">Pastelaria Nagata</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/home">Página Inicial</a></li>
+        <li routerLinkActive="active"><a routerLink="/sobre">Sobre a Pastelaria</a></li>
+        <li routerLinkActive="active"><a routerLink="pedidos">Pedido</a></li>
+        <li routerLinkActive="active"><a routerLink="loginFuncionario">Funcionários</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        <li *ngIf="!clienteEstaLogado(); else logado" dropdown>
+          <!-- DropDown Menu -->
+          <a dropdownToggle>
+            Entrar
+             <span class="caret"></span>
+          </a>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li><a routerLink="login">Login</a></li>
+            <li><a routerLink="clientes">Criar Conta</a></li>
+          </ul>
+        </li>
+        <!-- DropDown Menu -->
+        <ng-template #logado>
+          <li dropdown>
+            <!-- DropDown Menu -->
+            <a dropdownToggle>
+            {{nomeCliente}}
+             <span class="caret"></span>
+          </a>
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
+              <li><a (click)="logout()" routerLink="/home">Logout</a></li>
+            </ul>
+          </li>
+        </ng-template>
+        <!-- DropDown Menu -->
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</div>

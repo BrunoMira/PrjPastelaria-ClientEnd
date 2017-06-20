@@ -1,0 +1,35 @@
+<div class="container-cadastro">
+<header class="page-title">Cadastro</header>
+<div class="col-md-12 box-cadastro">
+  <div class="panel-body">
+    <form role="form">
+      <fieldset>
+        <div class="form-group">
+          <input class="form-control" placeholder="CPF" ngModel [(ngModel)]="cliente.cpf" name="cpf" type="text" (blur)="buscarCPF()" required>
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Nome Completo" ngModel [(ngModel)]="cliente.nomeCliente" name="nome" type="text" >
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Endereço" ngModel [(ngModel)]="cliente.endereco" name="endereco" type="text" >
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Telefone" ngModel [(ngModel)]="cliente.telefone"name="telefone" type="text"  pattern="\(\d{2}\)\d{4}-\d{4}">
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Senha" ngModel [(ngModel)]="cliente.senha" name="senha" type="password" >
+        </div>
+        <div class="checkbox">
+          <label>
+              <input name="lembrar" type="checkbox" value="Lembrar">Lembrar
+          </label>
+        </div>
+        <div class="cadastro-opcoes">
+          <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
+          <button type="button" class="btn btn-default opt" (click)="salvarCliente()">Salvar</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+</div>

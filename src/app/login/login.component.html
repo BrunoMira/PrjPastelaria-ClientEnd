@@ -1,0 +1,27 @@
+<div class="container-login">
+  <header class="page-title">Login</header>
+  <div class="col-md-12 box-cadastro">
+    <div class="panel-body">
+      <form role="form">
+        <fieldset>
+          <div class="form-group">
+            <input class="form-control" [(ngModel)]="login" placeholder="CPF" name="cpf" type="text">
+          </div>
+          <div class="form-group">
+            <input class="form-control" [(ngModel)]="senha" placeholder="Senha" name="senha" type="password">
+          </div>
+          <div class="checkbox">
+            <label>
+                <input name="lembrar" type="checkbox" value="Lembrar">Lembrar
+            </label>
+          </div>
+          <div class="cadastro-opcoes">
+            <button type="button" class="btn btn-default opt" (click)="logar()">Logar</button>
+            <button type="button" class="btn btn-default" routerLink="/clientes">Cadastrar-se</button>
+            <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

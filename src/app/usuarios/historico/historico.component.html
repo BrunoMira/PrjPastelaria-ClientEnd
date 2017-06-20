@@ -1,0 +1,68 @@
+<div class="container-pedido">
+  <header class="page-title">Histórico de Pedidos</header>
+  <div class="container-pedido-body">
+
+    <div class="pedido">
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="input-group  pull-right">
+            <input type="text" class="form-control" [(ngModel)]="pesquisa" placeholder="Digite o código do pedido">
+            <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Pesquisar</button>
+                </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pedido-section" *ngFor="let exibicao of exibicoes">
+        <div class="pedido-section-header">
+          <div class="pedido-section-title">
+            <h2>{{exibicao.etapa}}</h2>
+          </div>
+         
+        </div>
+
+        <div class="pedidos-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="pedido-col">Código</th>
+                <th class="pedido-col">Status</th>
+                <th class="pedido-col">Horário</th>
+
+                <th class="desc-col" *ngIf="exibicao.etapa == 'Pedidos rejeitados'">Motivo</th>
+                <th class="desc-col" *ngIf="exibicao.etapa != 'Pedidos rejeitados'">Descrição</th>
+                <th>Preço</th>
+                <th>Pagamento</th>
+                <th>Cliente</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of (exibicao.pedidos | pesquisa: pesquisa)">
+                <th scope="row">{{pedido._id}}</th>
+                <td class="pedido-status">{{pedido.etapa}}</td>
+                <td>{{ultimoHorario(pedido) | date:'HH:mm'}}</td>
+                 
+                <td *ngIf="exibicao.etapa != 'Pedidos rejeitados'" class="pedido-descricao">
+                  <div *ngFor="let produto of pedido.pizza">
+                    <span>{{produto.quantidade}} </span><span>{{produto.titulo}} ,</span>
+                  </div>
+                </td>
+                <td class="pedido-descricao">{{pedido.motivoRejeicao}}</td>
+                <td>{{pedido.precoTotal | currency:'BRL':true}}</td>
+                <td *ngIf="pedido.estaPago; else pendente">Pago</td>
+
+                <ng-template #pendente>
+                  <td>Pendente</td>
+                </ng-template>
+
+                <td>851.897.851-30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

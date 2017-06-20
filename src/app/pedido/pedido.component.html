@@ -1,0 +1,61 @@
+<div class="container-pedido">
+  <header class="page-title">Cardápio</header>
+  <div class="container-pedido-body">
+    <div class="cardapio">
+      <div class="cardapio-section">
+        <div class="cardapio-section-title">
+          <h4>Pastéis</h4>
+        </div>
+        <div class="cardapio-itens" *ngFor="let pizza of pizzas">
+          <div class="item-cardapio panel panel-default">
+            <div class="item-cardapio-linha">
+              <h5 class="item-cardapio-title">{{pizza.titulo}}</h5>
+              <p class="item-cardapio-preco">{{pizza.preco | currency:'BRL':true}}</p>
+            </div>
+            <div class="item-cardapio-linha">
+              <p class="item-cardapio-descricao">{{pizza.descricao}}</p>
+              <button type="button" class="btn btn-default" (click)="adicionarPedido(pizza)">Adicionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cardapio-section">
+        <div class="cardapio-section-title">
+          <h4>Bebidas</h4>
+        </div>
+        <div class="cardapio-itens">
+          <div class="item-cardapio panel panel-default" *ngFor="let bebida of bebidas">
+            <div class="item-cardapio-linha">
+              <h5 class="item-cardapio-title">{{bebida.titulo}}</h5>
+              <p class="item-cardapio-preco">{{bebida.preco | currency:'BRL':true}}</p>
+            </div>
+            <div class="item-cardapio-linha">
+              <p class="item-cardapio-descricao">{{bebida.descricao}}</p>
+              <button type="button" class="btn btn-default" (click)="adicionarPedido(bebida)">Adicionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carrinho">
+      <h4>Meu Pedido</h4>
+      <div class="pedido-itens" *ngFor="let pizza of pedido.pizza">
+        <div class="item-pedido-linha">
+          <p class="item-pedido-title">{{pizza.titulo}}</p>
+          <p class="item-pedido-preco">{{pizza.preco | currency:'BRL':true}}</p>
+          <input type="number" min="0" placeholder="Qtde" [(ngModel)]="pizza.quantidade" class="form-control" (blur)="calcularTotalPedido()" />
+          <button type="button" class="btn btn-danger" (click)="removerPedido(pizza)" >Remover</button>
+        </div>
+        
+      </div>
+      <div class="total-preco">
+        <p>Preço Total:</p>
+        <p class="total-pedido-preco">{{pedido.precoTotal | currency:'BRL':true}}</p>
+      </div>
+      <div class="pedido-opcoes">
+        <button type="button" class="btn btn-default" (click)="cancelar()">Cancelar</button>
+        <button type="button" class="btn btn-default opt" (click)="finalizarPedido()">Finalizar Pedido</button>
+      </div>
+    </div>
+  </div>
+</div>

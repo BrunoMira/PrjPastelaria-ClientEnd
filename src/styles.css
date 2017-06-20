@@ -1,1 +1,266 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-size: 16px;
+    font-family: 'Francois One', sans-serif !important;
+}
+
+body h1 {
+    font-size: 80px;
+}
+
+.navbar{
+    margin: 0 !important;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 50px;
+    width: 90%;
+    margin: 0.5em;
+    border-bottom: 1px dashed #ff0000;
+}
+
+.container-homepage-capa {
+    background-image: url('assets/images/pastel-1.jpg');
+    background-repeat: no-repeat;
+    background-position-y: center;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-pedido, .container-login, .container-cadastro {
+    min-height: 700px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 4em;
+}
+
+.container-pedido-body {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cardapio {
+    width: 60%;
+}
+
+.pedido {
+    width: 100%;
+}
+
+.cardapio-section, .pedido-section {
+    display: flow-root;
+    justify-content: center;
+    padding: 15px;
+}
+
+.cardapio-itens {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item-cardapio {
+    padding: 10px;
+}
+
+.item-cardapio-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-cardapio-title, .numero-pedido{
+    text-transform: uppercase;
+}
+
+.item-cardapio-preco, .item-pedido-preco, .pedido-status {
+    color: #ff0000;
+}
+
+.item-cardapio-descricao, .pedido-descricao {
+    color: #8c8c8c;
+}
+
+.carrinho {
+    width: 40%;
+    background-color: #f7f7f7;
+    padding: 15px;
+}
+
+.item-pedido-linha, .pedido-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.item-pedido-title {
+    width: 60%;
+}
+
+.item-pedido-linha input {
+    width: 20% !important;
+}
+
+.total-preco {
+    display: flex;
+    justify-content: space-between;
+    margin: 3em 0 1em 0;
+    font-size: 18px;
+}
+
+.total-pedido-preco {
+    color: #ff0000;
+}
+
+.pedido-opcoes, .cadastro-opcoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pedidos-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap
+}
+
+.pedido-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.pedido-section-header .row {
+    width: 50%;
+    margin-right: -15px;
+    margin-left: -15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pedido-section-header .input-group {
+    width: 100%;
+    display: inline-table !important;
+    margin-top: 0;
+}
+
+.pedido-section-title {
+    color: #ff0000;
+}
+
+.card-pedido {
+    width: 31%;
+    height: 21em;
+    padding: 15px;
+    margin: 10px;
+}
+
+.card-pedido-body {
+    min-height: 16em;
+}
+
+.opt {
+    color: #ff0000 !important;
+}
+
+.input-group-btn a {
+    color: #333;
+}
+
+.input-group-btn a:link {
+    text-decoration: none;
+    color: #333;
+}
+
+.input-group {
+    width: 40%;
+    display: inline-table !important;
+    margin-top: 5em;
+}
+
+footer {
+    background-color: #c9302c;
+    color: #ffffff;
+    height: 40%;
+    padding: 20px;
+    display: flex !important;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.redes ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.redes li {
+    display: inline-block;
+    list-style: none;
+}
+
+.redes img {
+    width: 40px;
+}
+
+.panel-body {
+    width: 50%;
+    background-color: #f7f7f7;
+    padding: 15px;
+}
+
+.box-cadastro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container-dados-cliente {
+  text-align: center;
+}
+
+.box-cliente {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2em;
+  margin-top: 3em;
+  background-color: #f7f7f7;
+}
+
+.box-cliente h3 {
+  width: 30%;
+}
+
+.box-cliente form {
+  width: 70%;
+}
+
+.btn-novo-pedido {
+  width: 25%;
+  height: 3em;
+  font-size: 20px !important;
+  margin: 2em;
+}
+
+.pedido-col {
+    width: 8%;
+}
+
+.desc-col {
+    width: 50%;
+}
